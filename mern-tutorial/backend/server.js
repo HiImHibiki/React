@@ -13,6 +13,7 @@ app.use(express.json()); // untuk baca req body json
 app.use(express.urlencoded({ extended: false })); // untuk baca req body urlencoded
 
 app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 
