@@ -9,23 +9,12 @@ connectDB();
 
 const app = express();
 
-// Handle Masalah CORS
-// const cors = require('cors');
-// const whitelist = ['http://localhost:3000'];
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin || whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-
 app.use(express.json()); // untuk baca req body json
 app.use(express.urlencoded({ extended: false })); // untuk baca req body urlencoded
+
+app.get('/products', function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for all origins!' });
+});
 
 app.use('/api/goals', require('./routes/goalRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
